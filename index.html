@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>How ChatGPT is Transforming Human Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #005bbb;
+      --primary-light: #e6f0ff;
+      --accent: #ff7a3c;
+      --bg: #f5f7fb;
+      --text: #222;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ---- NAVBAR ---- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      border: 1px solid transparent;
+      transition: 0.2s;
+      background: transparent;
+    }
+
+    .nav-links a:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      max-width: 1100px;
+      margin: 1.5rem auto 1rem;
+      padding: 1.5rem 1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text p {
+      margin-bottom: 1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #004291;
+    }
+
+    .btn-outline {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: white;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-light);
+    }
+
+    .hero-image-wrapper {
+      background: white;
+      border-radius: 16px;
+      padding: 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      object-fit: cover;
+      max-height: 260px;
+    }
+
+    .hero-caption {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+      color: #555;
+      text-align: center;
+    }
+
+    /* ---- SECTIONS ---- */
+    main {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem 1rem;
+    }
+
+    section {
+      margin-top: 2.3rem;
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.3rem 1.3rem 1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e4e7f2;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .section-body {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .section-body img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      max-height: 180px;
+    }
+
+    .section-body ul {
+      padding-left: 1rem;
+      margin-top: 0.4rem;
+    }
+
+    .section-body li {
+      margin-bottom: 0.25rem;
+    }
+
+    .section-body p {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .section-footer {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 1rem;
+      color: #777;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 780px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .section-body {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="nav-title">ChatGPT Final Project</div>
+      <nav class="nav-links">
+        <a href="#why">Why We Chose</a>
+        <a href="#what">What is ChatGPT</a>
+        <a href="#how">How it Works</a>
+        <a href="#stats">Statistics</a>
+        <a href="#education">Education</a>
+        <a href="#health">Health</a>
+        <a href="#utilitarianism">Utilitarianism</a>
+        <a href="#virtue">Virtue</a>
+        <a href="#social">Social &amp; Political</a>
+        <a href="#future">Future</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>How ChatGPT is Transforming Human Life</h1>
+      <p>
+        This website is our class project exploring ChatGPT: why we chose it,
+        how it works, where it is used, and what ethical questions it raises in
+        education, health, and society.
+      </p>
+      <div class="hero-buttons">
+        <a href="#why" class="btn-primary">Start with "Why we chose"</a>
+        <a href="#stats" class="btn-outline">Jump to statistics ↓</a>
+      </div>
+    </div>
+    <div class="hero-image-wrapper">
+      <!-- ►► Put an image named hero.jpg inside an "images" folder in your repo ◄◄ -->
+      <img
+        src="images/hero.jpg"
+        alt="Students and professionals using ChatGPT on laptops and phones"
+        class="hero-image"
+      />
+      <div class="hero-caption">
+        Example hero image (replace <code>images/hero.jpg</code> with your own
+        picture).
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- WHY WE CHOSE -->
+    <section id="why">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Why We Chose ChatGPT</h2>
+          <div class="section-tag">Motivation</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              Our team chose ChatGPT because it is one of the most visible and
+              widely used artificial intelligence tools today. It is changing
+              how people write, learn, search for information, and communicate.
+            </p>
+            <ul>
+              <li>Used by millions of students and professionals.</li>
+              <li>Easy to access in a web browser or phone app.</li>
+              <li>Raises important ethical and social questions.</li>
+            </ul>
+          </div>
+          <img
+            src="images/why.jpg"
+            alt="People choosing ChatGPT as a technology focus"
+          />
+        </div>
+        <div class="section-footer">
+          You can edit this paragraph to match your own reasons exactly.
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS CHATGPT -->
+    <section id="what">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>What is ChatGPT?</h2>
+          <div class="section-tag">Definition</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              ChatGPT is a large language model created by OpenAI. It is a
+              computer program that can understand text prompts and generate
+              human-like responses in many languages.
+            </p>
+            <ul>
+              <li>Answers questions and explains concepts.</li>
+              <li>Helps write emails, code, essays, and more.</li>
+              <li>Works by predicting the next likely word in a sentence.</li>
+            </ul>
+          </div>
+          <img
+            src="images/what.jpg"
+            alt="Abstract illustration of artificial intelligence and language"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>How ChatGPT Works</h2>
+          <div class="section-tag">Technology</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              ChatGPT is based on a transformer neural network that was trained
+              on large amounts of text. During training, the model learned
+              patterns in language, such as grammar, facts, and writing styles.
+            </p>
+            <ul>
+              <li>Input: the user types a prompt or question.</li>
+              <li>Processing: the model analyzes context and patterns.</li>
+              <li>Output: the model predicts and generates the next words.</li>
+            </ul>
+          </div>
+          <img
+            src="images/how.jpg"
+            alt="Diagram of data flowing through an AI model"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section id="stats">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Statistics</h2>
+          <div class="section-tag">Usage &amp; Growth</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              In our research, we found statistics that show how quickly
+              ChatGPT and similar AI tools are spreading. (Replace these with
+              your exact numbers and citations.)
+            </p>
+            <ul>
+              <li>Millions of users signed up within the first months.</li>
+              <li>Used worldwide in schools, companies, and governments.</li>
+              <li>New versions continue to increase speed and accuracy.</li>
+            </ul>
+          </div>
+          <img
+            src="images/stats.jpg"
+            alt="Graph or chart representing growth of AI usage"
+          />
+        </div>
+        <div class="section-footer">
+          You can paste a screenshot of your real chart here instead of this
+          placeholder image.
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>ChatGPT in Education</h2>
+          <div class="section-tag">Use Case</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              In education, ChatGPT can act as a study partner, language
+              helper, or writing assistant. It can explain concepts in simple
+              language and give practice questions.
+            </p>
+            <ul>
+              <li>Helps students brainstorm ideas and outlines.</li>
+              <li>Supports language learners with grammar and vocabulary.</li>
+              <li>
+                Risk: may encourage plagiarism if students copy answers without
+                thinking.
+              </li>
+            </ul>
+          </div>
+          <img
+            src="images/education.jpg"
+            alt="Student using a laptop for AI-assisted learning"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- HEALTH -->
+    <section id="health">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>ChatGPT in Health</h2>
+          <div class="section-tag">Use Case</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              ChatGPT is not a doctor, but it can support health-related tasks
+              such as explaining medical terms, summarizing patient education
+              materials, or helping schedule and organize information.
+            </p>
+            <ul>
+              <li>Can improve communication between patients and providers.</li>
+              <li>
+                Must not replace professional medical advice or diagnosis.
+              </li>
+              <li>Privacy and data protection are very important.</li>
+            </ul>
+          </div>
+          <img
+            src="images/health.jpg"
+            alt="Healthcare worker using AI tools on a tablet"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- UTILITARIANISM -->
+    <section id="utilitarianism">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Ethical Lens: Utilitarianism</h2>
+          <div class="section-tag">Ethical Lens 1</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              Utilitarianism asks whether ChatGPT creates “the greatest good
+              for the greatest number.” From this view, the technology is good
+              if its overall benefits are larger than its harms.
+            </p>
+            <ul>
+              <li>Benefits: faster learning, productivity, accessibility.</li>
+              <li>
+                Harms: misinformation, job disruption, unfair advantages in
+                school.
+              </li>
+              <li>
+                Goal: design rules and policies that maximize benefits and
+                minimize harm for society.
+              </li>
+            </ul>
+          </div>
+          <img
+            src="images/utilitarianism.jpg"
+            alt="Scales balancing benefits and harms of technology"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- VIRTUE ETHICS -->
+    <section id="virtue">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Ethical Lens: Virtue Ethics</h2>
+          <div class="section-tag">Ethical Lens 2</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              Virtue ethics focuses on the kind of person we become when we use
+              ChatGPT. It asks whether the technology supports virtues such as
+              honesty, responsibility, and courage.
+            </p>
+            <ul>
+              <li>
+                Using ChatGPT wisely can support curiosity and lifelong
+                learning.
+              </li>
+              <li>
+                Misusing it (cheating, copying work) can harm integrity and
+                character.
+              </li>
+              <li>
+                Teachers and students need clear norms about honest, virtuous
+                use.
+              </li>
+            </ul>
+          </div>
+          <img
+            src="images/virtue.jpg"
+            alt="Person standing at a crossroads choosing the virtuous path"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL & POLITICAL CONCERNS -->
+    <section id="social">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Social &amp; Political Concerns</h2>
+          <div class="section-tag">Impacts</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              ChatGPT raises questions about power, fairness, and control of
+              information. These issues make the technology political as well
+              as technical.
+            </p>
+            <ul>
+              <li>Who owns the data used to train AI models?</li>
+              <li>
+                Will AI increase inequality between people who have access to
+                it and those who do not?
+              </li>
+              <li>
+                How should governments and companies regulate AI to protect
+                human rights?
+              </li>
+            </ul>
+          </div>
+          <img
+            src="images/social.jpg"
+            alt="City skyline with digital connections representing society and politics"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE RECOMMENDATIONS -->
+    <section id="future">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Future Recommendations</h2>
+          <div class="section-tag">Our Ideas</div>
+        </div>
+        <div class="section-body">
+          <div>
+            <p>
+              For a less harmful and more helpful future, we recommend combining
+              technical solutions, classroom policies, and public rules.
+            </p>
+            <ul>
+              <li>
+                Clear guidelines in schools and workplaces about acceptable AI
+                use.
+              </li>
+              <li>
+                Transparency from companies about how AI systems are trained
+                and limited.
+              </li>
+              <li>
+                Ongoing education so users understand both the power and limits
+                of ChatGPT.
+              </li>
+            </ul>
+          </div>
+          <img
+            src="images/future.jpg"
+            alt="People looking toward a digital future with AI"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 ChatGPT Project – Edit this line with your team names if you like.
+  </footer>
+</body>
+</html>
